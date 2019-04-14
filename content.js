@@ -1,10 +1,13 @@
 
 console.log("hello");
 
-
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    console.log(request, sender, sendResponse);
-    //document.body.append(request.message); //append a DOM node with DOM method
-  })
+// TODO: make clean
+document.addEventListener("mouseup", () => {
+  var selection = window.getSelection().toString();
+  if (selection) {
+    chrome.extension.sendMessage(
+      { "cmd" : "text_selected", "data" : selection },
+    )
+  }
+})
 

@@ -1,17 +1,24 @@
 // document.body.innerHtml = config
 //
 chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    console.log("hello custom")
-    console.log(request);
-    var ul = htmlToElement(request.highlights)
-    var div = document.createElement("div")
-    var h2 = document.createElement("h2")
-    var t = document.createTextNode(request.source);
+  ({ highlights, source }) => {
+    const ul = document.createElement("ul")
+    highlights.map(function(selection) {
+      const h = document.createElement("li")
+      const t = document.createTextNode(selection);
+      h.appendChild(t);
+      ul.append(h);
+    })
+    const div = document.createElement("div")
+    const h2 = document.createElement("h2")
+    const t = document.createTextNode(source.title);
+    const link = document.createElement("a")
+    link.href = source.url
     h2.appendChild(t);
-    div.appendChild(h2)
+    link.appendChild(h2)
+    div.appendChild(link)
     div.appendChild(ul)
-    document.body.appendChild(div);
+    document.getElementById("container").appendChild(div);
   })
 
 
@@ -20,7 +27,7 @@ chrome.runtime.onMessage.addListener(
  * @return {Element}
  */
 function htmlToElement(html) {
-    var template = document.createElement('template');
+    const template = document.createElement('template');
     html = html.trim(); // Never return a text node of whitespace as the result
     template.innerHTML = html;
     return template.content.firstChild;

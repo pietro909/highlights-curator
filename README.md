@@ -8,3 +8,8 @@
 6. when ready, right click the "hello" icon and select _submit_
 7. you should find a new page with a bullet list (give it ~3 seconds)
 
+# Credits
+
+## Icon
+
+[Academic, clip, exam, note, paper icon](https://www.iconfinder.com/icons/2824438/academic_clip_exam_note_paper_icon) from [bamicon](https://www.iconfinder.com/Tempebacem) distributed under [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
