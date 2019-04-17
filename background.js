@@ -48,6 +48,7 @@ function finalize(tabCache, tabInfo) {
             source: {
               url: tabInfo.url,
               title: tabInfo.title,
+              date: Date.now(),
             },
           }),
         500,
